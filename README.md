@@ -1,6 +1,6 @@
 # LFO Waveform Designer & Harmonic Analyzer
 
-A comprehensive MATLAB signal processing toolkit for synthesizing and analyzing low-frequency oscillator (LFO) waveforms using Fourier series, with advanced spectral analysis and non-linear waveshaping optimization capabilities.
+A comprehensive MATLAB signal processing toolkit for synthesizing and analyzing low-frequency oscillator (LFO) waveforms using Fourier series, with advanced spectral analysis and non-linear waveshapers.
 
 ## Project Overview
 
@@ -129,10 +129,6 @@ y = tanh(k × x) / tanh(k)
 - Demonstrates practical non-linear signal processing
 - Second figure shows optimal shaper output (k = 1.4) using `plot_dual()`
 
-**Dependencies:**
-- Requires `x_tri`, `t`, `fs` variables from `synth.m` workspace
-- Must run `synth.m` first to populate required signals
-
 ## Signal Processing Techniques
 
 ### FFT & Spectral Analysis
@@ -221,6 +217,19 @@ synth
 % Step 3 (optional): Run waveshaper optimization
 sine_shaper
 ```
+
+### Use Your Own `.wav` File in the Waterfall Plot
+When `synth.m` prompts for a filename, you can enter any `.wav` file (in the current MATLAB folder or a full path). The script will:
+
+1. Read the file with `audioread`.
+2. If stereo, keep the left channel only.
+3. Resample the file to the project sample rate (`fs`).
+4. Normalize the amplitude to [-1, 1].
+5. Trim or zero‑pad to match length `N`.
+6. Compute the single‑sided spectrum with `get_spectrum`.
+7. Append it as a 5th waterfall row labeled **Your file**.
+
+If you press Enter without typing a filename, the comparison is skipped.
 
 ### Custom Waveform Synthesis
 ```matlab
