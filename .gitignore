@@ -1,0 +1,20 @@
+# MATLAB-specific ignore patterns
+*.mat
+*.asv
+*.mexa64
+*.mexw64
+*.mexmaci64
+.DS_Store
+
+# Common files to exclude
+*.log
+*.tmp
+*~
+*.swp
+*.bak
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
