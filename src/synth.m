@@ -114,7 +114,6 @@ if mod(N, 2) ~= 0
     N = N - 1;
 end
 
-
 f_axis = (0:N/2) * fs / N;
 W(1,:) = get_spectrum(x_sine(1:N), N);
 W(2,:) = get_spectrum(x_tri(1:N), N);
@@ -130,9 +129,8 @@ zlabel('Amplitude');
 title('Harmonic spectrum — all waveforms');
 yticks(1:4);
 yticklabels({'Sine', 'Triangle', 'Sawtooth', 'Square'});
-gridx on;
+grid on;
 colormap cool;
-
 
 %% Interactive — load your own audio file and add to waterfall
 % Place any .wav file in your MATLAB folder and enter its name when prompted
@@ -156,14 +154,15 @@ if ~isempty(user_file)
     W(5,:) = user_spec;
     figure;
     waterfall(f_axis, 1:5, W);
-    xlim([0 500]);
+xlim([0 500]);
 xlabel('Frequency (Hz)');
 ylabel('Waveform');
 zlabel('Amplitude');
 title('Harmonic spectrum — all waveforms + your audio');
 yticks(1:5);
 yticklabels({'Sine', 'Triangle', 'Sawtooth', 'Square', 'Your file'});
-gridx on;
+grid on;
+colormap cool;
 else
     disp('No file entered, skipping audio comparison.');
 end
